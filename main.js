@@ -15,9 +15,10 @@ document.body.appendChild(renderer.domElement);
 
 new OrbitControls(camera, renderer.domElement);
 
-const geometry = new THREE.IcosahedronGeometry();
+const geometry = new THREE.IcosahedronGeometry(1, 13);
 const material = new THREE.MeshStandardMaterial({
 	color: 0xffff00,
+	flatShading: true,
 });
 
 const earthMesh = new THREE.Mesh(geometry, material);
