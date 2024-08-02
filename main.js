@@ -3,8 +3,8 @@ import { OrbitControls } from "three/examples/jsm/Addons.js";
 
 console.log(`THREE REVISION: %c${THREE.REVISION}`, "color: #ffff00");
 
-const w = window.innerWidth;
-const h = window.innerHeight;
+let w = window.innerWidth;
+let h = window.innerHeight;
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
@@ -15,22 +15,37 @@ document.body.appendChild(renderer.domElement);
 
 new OrbitControls(camera, renderer.domElement);
 
-const geometry = new THREE.BoxGeometry();
+const geometry = new THREE.IcosahedronGeometry();
 const material = new THREE.MeshStandardMaterial({
 	color: 0xffff00,
 });
 
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
+const earthMesh = new THREE.Mesh(geometry, material);
+scene.add(earthMesh);
+const hemiLight = new THREE.HemisphereLight(0xffffff, 0x666666);
 scene.add(hemiLight);
 
 function animate() {
 	requestAnimationFrame(animate);
 
-	cube.rotation.x += 0.001;
-	cube.rotation.y += 0.002;
+	earthMesh.rotation.x += 0.01;
+	earthMesh.rotation.y += 0.02;
 	renderer.render(scene, camera);
 }
 
 animate();
+
+window.addEventListener(
+	"resize",
+	() => {
+		w = window.innerWidth;
+		h = window.innerHeight;
+
+		renderer.setSize(w, h);
+		camera.aspect = w / h;
+		camera.updateProjectionMatrix();
+
+		renderer.render(scene, camera);
+	},
+	false,
+);
