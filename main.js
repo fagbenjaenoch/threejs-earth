@@ -15,22 +15,25 @@ document.body.appendChild(renderer.domElement);
 
 new OrbitControls(camera, renderer.domElement);
 
+const loader = new THREE.TextureLoader();
 const geometry = new THREE.IcosahedronGeometry(1, 13);
 const material = new THREE.MeshStandardMaterial({
-	color: 0xffff00,
-	flatShading: true,
+	map: loader.load("./public/textures/earthmap1k.jpg"),
 });
 
+const earthGroup = new THREE.Group();
+earthGroup.rotation.z = -(23.4 * Math.PI) / 180;
 const earthMesh = new THREE.Mesh(geometry, material);
-scene.add(earthMesh);
+earthGroup.add(earthMesh);
 const hemiLight = new THREE.HemisphereLight(0xffffff, 0x666666);
 scene.add(hemiLight);
+
+scene.add(earthGroup);
 
 function animate() {
 	requestAnimationFrame(animate);
 
-	earthMesh.rotation.x += 0.01;
-	earthMesh.rotation.y += 0.02;
+	earthMesh.rotation.y += 0.002;
 	renderer.render(scene, camera);
 }
 
