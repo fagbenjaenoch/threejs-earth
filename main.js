@@ -25,8 +25,25 @@ const earthGroup = new THREE.Group();
 earthGroup.rotation.z = -(23.4 * Math.PI) / 180;
 const earthMesh = new THREE.Mesh(geometry, material);
 earthGroup.add(earthMesh);
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x666666);
-scene.add(hemiLight);
+
+const lightsMat = new THREE.MeshBasicMaterial({
+	map: loader.load("./public/textures/earthlights1k.jpg"),
+	blending: THREE.AdditiveBlending,
+});
+const lightMesh = new THREE.Mesh(geometry, lightsMat);
+earthGroup.add(lightMesh);
+
+const cloudMat = new THREE.MeshBasicMaterial({
+	map: loader.load("./public/textures/earthcloudmaptrans.jpg"),
+	transparent: true,
+	alphaTest: 0.9,
+});
+const cloudMesh = new THREE.Mesh(geometry, cloudMat);
+// earthGroup.add(cloudMesh);
+
+const sunLight = new THREE.DirectionalLight(0xffffff);
+sunLight.position.set(-2, 0.5, 1.5);
+scene.add(sunLight);
 
 scene.add(earthGroup);
 
@@ -34,6 +51,8 @@ function animate() {
 	requestAnimationFrame(animate);
 
 	earthMesh.rotation.y += 0.002;
+	lightMesh.rotation.y += 0.002;
+	// cloudMesh.rotation.y += 0.002;
 	renderer.render(scene, camera);
 }
 
