@@ -2,15 +2,13 @@ This project is a simple one and it's my exploration into the [Three.js](https:/
 
 # Getting Started
 
-1. Clone the project
-2. Make sure you have [pnpm](https://pnpm.io) installed
-3. Run
-```bash
-  pnpm install
+Clone the project and make sure you have [pnpm](https://pnpm.io) installed
+
+Run
+   ```bash
+   pnpm install
+   ```
+Then run
+ ```bash
+ pnpm run dev
 ```
-To install dependencies
-4. Then Run
-```bash
-  pnpm run dev
-```
-To start the project 
