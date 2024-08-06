@@ -8,12 +8,12 @@ Clone the project and make sure you have [pnpm](https://pnpm.io) installed
 
 Run
 
-   ```bash
+```bash
    pnpm install
-   ```
+```
 
 Then run
 
  ```bash
- pnpm run dev
+   pnpm run dev
 ```
