@@ -3,3 +3,29 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  font-family: "Titillium Web", sans-serif;
+  color: white;
+}
+
+.main {
+  position: absolute;
+  padding: 1rem 1rem 0;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  padding: 0 1rem 1rem;
+}
+
+.easter-egg {
+  text-decoration: underline;
+  cursor: pointer;
+}
