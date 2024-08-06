@@ -13,14 +13,28 @@ a {
   color: white;
 }
 
+button {
+  cursor: pointer;
+}
+
 .main {
+  width: 100%;
   position: absolute;
   padding: 1rem 1rem 0;
 }
 
-.heading {
+.top {
   display: flex;
   justify-content: space-between;
+}
+
+.controls>*+* {
+  margin-top: 0.5rem;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
 }
 
 footer {
@@ -29,6 +43,7 @@ footer {
   bottom: 0;
   padding: 0 1rem 1rem;
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
