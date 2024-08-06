@@ -27,5 +27,5 @@ footer {
 
 .easter-egg {
   text-decoration: underline;
-  cursor: url("./public/easter-egg-cursor.png"), pointer;
+  cursor: url("/easter-egg-cursor.png"), pointer;
 }
