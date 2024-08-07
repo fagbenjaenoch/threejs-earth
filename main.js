@@ -47,11 +47,19 @@ scene.add(sunLight);
 
 scene.add(earthGroup);
 
+const speedEl = document.querySelector("#speed-value");
+const speedInputEl = document.querySelector("#speed");
+
+speedEl.textContent = `${speedInputEl.value}x`;
+speedInputEl.addEventListener("input", (e) => {
+	speedEl.textContent = `${e.target.value}x`;
+});
+
 function animate() {
 	requestAnimationFrame(animate);
 
-	earthMesh.rotation.y += 0.002;
-	lightMesh.rotation.y += 0.002;
+	earthMesh.rotation.y += 0.002 * speedInputEl.value;
+	lightMesh.rotation.y += 0.002 * speedInputEl.value;
 	// cloudMesh.rotation.y += 0.002;
 	renderer.render(scene, camera);
 }
