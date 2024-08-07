@@ -47,12 +47,23 @@ scene.add(sunLight);
 
 scene.add(earthGroup);
 
+const formEl = document.querySelector(".controls");
 const speedEl = document.querySelector("#speed-value");
 const speedInputEl = document.querySelector("#speed");
+const cameraResetEl = document.querySelector("#reset-camera");
 
 speedEl.textContent = `${speedInputEl.value}x`;
-speedInputEl.addEventListener("input", (e) => {
-	speedEl.textContent = `${e.target.value}x`;
+speedInputEl.addEventListener("input", () => {
+	speedEl.textContent = `${speedInputEl.value}x`;
+});
+
+formEl.addEventListener("reset", () => {
+	speedInputEl.value = "1";
+	speedEl.textContent = `${speedInputEl.value}x`;
+});
+
+cameraResetEl.addEventListener("onClick", () => {
+	camera.position.set(0, 0, 5);
 });
 
 function animate() {
