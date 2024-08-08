@@ -9,11 +9,12 @@ let h = window.innerHeight;
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
 camera.position.z = 5;
+const initialCameraPosition = camera.position.clone();
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(w, h);
 document.body.appendChild(renderer.domElement);
 
-new OrbitControls(camera, renderer.domElement);
+const controls = new OrbitControls(camera, renderer.domElement);
 
 const loader = new THREE.TextureLoader();
 const geometry = new THREE.IcosahedronGeometry(1, 13);
@@ -62,8 +63,8 @@ formEl.addEventListener("reset", () => {
 	speedEl.textContent = `${speedInputEl.value}x`;
 });
 
-cameraResetEl.addEventListener("click", (e) => {
-	camera.position.set(0, 0, 5);
+cameraResetEl.addEventListener("click", () => {
+	controls.reset();
 });
 
 function animate() {
