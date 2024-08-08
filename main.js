@@ -62,7 +62,7 @@ formEl.addEventListener("reset", () => {
 	speedEl.textContent = `${speedInputEl.value}x`;
 });
 
-cameraResetEl.addEventListener("onClick", () => {
+cameraResetEl.addEventListener("click", (e) => {
 	camera.position.set(0, 0, 5);
 });
 
